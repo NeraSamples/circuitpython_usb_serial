@@ -27,7 +27,7 @@ usb_cdc.enable(data=True)
 
 ## The Serial Ports
 
-The serial ports of your boards are available on your computer, depending on the operating system, for example `COM*` on Windows, `/dev/cu.usbmodem*` on MacOS, `/dev/ttyACM0*` on linux.
+The serial ports of your boards are available on your computer, depending on the operating system, for example `COM*` on Windows, `/dev/cu.usbmodem*` on MacOS, `/dev/ttyACM*` on linux.
 
 To help find the serial ports (REPL or data) on the host side, the `find_serial_port.py` script lists the ports per board and per type (if present). It requires the `adafruit_board_toolkit` module.
 ```
