@@ -14,7 +14,7 @@ The default serial channel also hosts the REPL, so you can't communicate through
 
 Since Circuitpython 7, it is possible to enable a second serial channel (some chips might be limited) for binary communication without limitations and without losing the REPL, so you can still see debug prints and errors.
 
-Note that you can use the REPL serial port with `usb_cdc.console`, but that is not available on boards that don't have USB OTG, like the suffixless ESP32 or the ESP32-C3.
+Note that you can use the REPL serial port with `usb_cdc.console`, but that is not available on boards that don't have USB OTG, like the suffixless ESP32 or the ESP32-C3 and C6.
 
 Using the data serial channel requires creating a `boot.py` file containing the following code. The file requires a reset to be active after it's created the first time (it runs whe the board boots).
 
@@ -40,7 +40,7 @@ I also developped a command line python tool to help gather information on the c
 
 ## The Example Scripts
 
-These scripts use a loop in Circuitpython ot communicate with the host computer without blocking. That means that you can run some other code in the same loop, that doesn't have to wait until it receives a message from the host.
+These scripts use a loop in Circuitpython to communicate with the host computer without blocking. That means that you can run some other code in the same loop, that doesn't have to wait until it receives a message from the host.
 
 Some parts use the json library, not always available on small SAMD21 (M0) boards, due to lack of space, but they can still be used as templates to insert your own code instead.
 
