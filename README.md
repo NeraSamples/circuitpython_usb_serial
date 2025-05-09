@@ -12,11 +12,9 @@ Circuitpython enables communication with the host computer it is connected to vi
 
 The default serial channel also hosts the REPL, so you can't communicate through it while looking at the REPL, and some characters can interrupt the code (ctrl-C) so it's not suited for binary data.
 
-Since Circuitpython 7, it is possible to enable a second serial channel (some chips might be limited) for binary communication without limitations and without losing the REPL, so you can still see debug prints and errors.
+Since Circuitpython 7, it is possible to enable a second serial channel for binary communication without limitations and without losing the REPL, so you can still see debug prints and errors.
 
-Note that you can use the REPL serial port with `usb_cdc.console`, but that is not available on boards that don't have USB OTG, like the suffixless ESP32 or the ESP32-C3 and C6.
-
-Using the data serial channel requires creating a `boot.py` file containing the following code. The file requires a reset to be active after it's created the first time (it runs whe the board boots).
+Using the data serial channel requires creating a `boot.py` file containing the following code. The file requires a reset to be active after it's created the first time (it runs when the board boots).
 
 - [`boot.py`](boot.py)
 
@@ -25,7 +23,13 @@ import usb_cdc
 usb_cdc.enable(data=True)
 ```
 
-## The Serial Ports
+### Caveat
+
+Some chips, like the ESP32-S2 and S3 have a limited available amount of USB endpoints so you will need to disable the console or the drive to enable data. You could use the web workflow to access the REPL or the drive during development.
+
+Note that you can use the REPL serial port with `usb_cdc.console`, but usb_cdc (and the data channel) is not available on boards that don't have USB OTG, like the original ESP32 or the ESP32-C3 and C6.
+
+## Host Serial Ports
 
 The serial ports of your boards are available on your computer, depending on the operating system, for example `COM*` on Windows, `/dev/cu.usbmodem*` on MacOS, `/dev/ttyACM*` on linux.
 
